@@ -4,6 +4,7 @@ package lu.uni.jakartaee;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -25,14 +26,16 @@ public class InputBean implements Serializable {
     @EJB
     private SpellingErrorRepository spellingErrorRepository;
 
-    public void checkText() {
+    public String checkText() {
         try {
             errors = spellCheckService.checkSpelling(userInput);
             for (SpellingError error: errors){
                 spellingErrorRepository.save(error);
             }
+            return "success";
         } catch (IOException e) {
             e.printStackTrace();
+            return "failure";
         }
     }
 

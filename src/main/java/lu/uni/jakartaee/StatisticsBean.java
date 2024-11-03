@@ -1,11 +1,13 @@
-package lu.uni.jakartaee.jpa;
+package lu.uni.jakartaee;
+
+import java.io.Serializable;
+import java.util.List;
 
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
-
-import java.io.Serializable;
-import java.util.List;
+import lu.uni.jakartaee.jpa.SpellingError;
+import lu.uni.jakartaee.jpa.SpellingErrorRepository;
 
 @Named("statisticsBean")
 @RequestScoped
