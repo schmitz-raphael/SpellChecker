@@ -10,7 +10,7 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import lu.uni.jakartaee.jpa.SpellCheckService;
 import lu.uni.jakartaee.jpa.SpellingError;
-import lu.uni.jakartaee.jpa.SpellingErrorRepository;
+import lu.uni.jakartaee.jpa.SpellingErrorManager;
 
 
 @Named("inputBean")  // This makes it accessible in JSF as #{inputBean}
@@ -24,14 +24,17 @@ public class InputBean implements Serializable {
     private SpellCheckService spellCheckService;
 
     @EJB
-    private SpellingErrorRepository spellingErrorRepository;
+    private SpellingErrorManager spellingErrorManager;
 
+    //function to process the text input from the user by pressing the button
     public String checkText() {
         try {
+            //retrieve the errors and add them to the db
             errors = spellCheckService.checkSpelling(userInput);
             for (SpellingError error: errors){
-                spellingErrorRepository.save(error);
+                spellingErrorManager.save(error);
             }
+            userInput = "";
             return "success";
         } catch (IOException e) {
             e.printStackTrace();

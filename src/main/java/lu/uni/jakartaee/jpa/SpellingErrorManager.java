@@ -7,12 +7,13 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
 @Stateless
-public class SpellingErrorRepository {
+public class SpellingErrorManager {
     @PersistenceContext
     private EntityManager em;
 
     public void save(SpellingError error) {
         em.persist(error);
+        testConnection();
     }
 
     public List<SpellingError> findTopErrors(int x) {
@@ -20,5 +21,10 @@ public class SpellingErrorRepository {
             .setMaxResults(x)
             .getResultList();
     }
+
+    public void testConnection() {
+        List<Object[]> results = em.createNativeQuery("SELECT 1").getResultList();
+    }
+
 }
 

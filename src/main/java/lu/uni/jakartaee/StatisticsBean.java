@@ -7,7 +7,7 @@ import jakarta.ejb.EJB;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
 import lu.uni.jakartaee.jpa.SpellingError;
-import lu.uni.jakartaee.jpa.SpellingErrorRepository;
+import lu.uni.jakartaee.jpa.SpellingErrorManager;
 
 @Named("statisticsBean")
 @RequestScoped
@@ -17,10 +17,10 @@ public class StatisticsBean implements Serializable {
     private List<SpellingError> topErrors;
 
     @EJB
-    private SpellingErrorRepository spellingErrorRepository;
+    private SpellingErrorManager spellingErrorManager;
 
     public void loadStatistics() {
-        topErrors = spellingErrorRepository.findTopErrors(topX);
+        topErrors = spellingErrorManager.findTopErrors(topX);
     }
 
     // Getters and setters

@@ -14,7 +14,6 @@
             <h:form>
                 <h1>Spell Checker</h1>
                 <h:panelGrid columns="1" style="width:60%; margin-top:10px;">
-                    <h:inputTextarea value="#{inputBean.userInput}" rows="10" cols="50" readonly="true"/>
                     <h:panelGroup id="errors" layout="block" style="margin-top:20px;">
                         <h:outputText value="Errors found:" rendered="#{not empty inputBean.errors}" style="font-weight:bold; margin-bottom:10px;" />
                         <h:panelGrid columns="1" rendered="#{not empty inputBean.errors}" style="width:100%; margin-top:10px;">
