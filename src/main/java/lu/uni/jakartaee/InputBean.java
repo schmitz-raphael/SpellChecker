@@ -34,7 +34,9 @@ public class InputBean implements Serializable {
             for (SpellingError error: errors){
                 spellingErrorManager.save(error);
             }
+            //set the userInput to an empty string, so that when the spell checker is loaded the next time, the input field is empty
             userInput = "";
+            //return success to initiate the navigation rule
             return "success";
         } catch (IOException e) {
             e.printStackTrace();

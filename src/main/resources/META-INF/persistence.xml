@@ -5,20 +5,14 @@
              version="2.2">
 
     <persistence-unit name="exercise2" transaction-type="JTA">
-        <!-- JTA Data Source for the MariaDB Database -->
         <jta-data-source>java:jboss/datasources/MariaDBDS</jta-data-source>
         
-        <!-- Entity Classes -->
+
         <class>lu.uni.jakartaee.jpa.SpellingError</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         
-        <!-- Hibernate properties -->
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- Change to 'create' to recreate the schema every time -->
-            <property name="hibernate.format_sql" value="true"/>
-            <property name="hibernate.use_sql_comments" value="true"/>
-            <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.type" value="trace"/>
         </properties>
     </persistence-unit>
 </persistence>

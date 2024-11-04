@@ -13,7 +13,6 @@ public class SpellingErrorManager {
 
     public void save(SpellingError error) {
         em.persist(error);
-        testConnection();
     }
 
     public List<SpellingError> findTopErrors(int x) {
@@ -21,10 +20,5 @@ public class SpellingErrorManager {
             .setMaxResults(x)
             .getResultList();
     }
-
-    public void testConnection() {
-        List<Object[]> results = em.createNativeQuery("SELECT 1").getResultList();
-    }
-
 }
 

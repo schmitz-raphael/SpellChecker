@@ -15,7 +15,6 @@
                 <h1>Spell Checker</h1>
                 <h:panelGrid columns="1" style="width:60%; margin-top:10px;">
                     <h:panelGroup id="errors" layout="block" style="margin-top:20px;">
-                        <h:outputText value="Errors found:" rendered="#{not empty inputBean.errors}" style="font-weight:bold; margin-bottom:10px;" />
                         <h:panelGrid columns="1" rendered="#{not empty inputBean.errors}" style="width:100%; margin-top:10px;">
                             <ui:repeat var="error" value="#{inputBean.errors}">
                                 <h:outputText value="• #{error.wrongWord} - Suggested: #{error.correctWord}" style="margin-left:20px;" />
